@@ -1,6 +1,6 @@
 <?php
 
-namespace Lej\Providers;
+namespace Ds\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

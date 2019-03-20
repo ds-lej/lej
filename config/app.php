@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Lej\Providers\AppServiceProvider::class,
-        Lej\Providers\AuthServiceProvider::class,
-        // Lej\Providers\BroadcastServiceProvider::class,
-        Lej\Providers\EventServiceProvider::class,
-        Lej\Providers\RouteServiceProvider::class,
+        Ds\Providers\AppServiceProvider::class,
+        Ds\Providers\AuthServiceProvider::class,
+        // Ds\Providers\BroadcastServiceProvider::class,
+        Ds\Providers\EventServiceProvider::class,
+        Ds\Providers\RouteServiceProvider::class,
 
     ],
 

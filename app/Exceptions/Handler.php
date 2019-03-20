@@ -1,6 +1,6 @@
 <?php
 
-namespace Lej\Exceptions;
+namespace Ds\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

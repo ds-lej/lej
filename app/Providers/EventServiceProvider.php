@@ -1,6 +1,6 @@
 <?php
 
-namespace Lej\Providers;
+namespace Ds\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Lej\Events\Event' => [
-            'Lej\Listeners\EventListener',
+        'Ds\Events\Event' => [
+            'Ds\Listeners\EventListener',
         ],
     ];
 

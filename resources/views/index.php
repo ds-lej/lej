@@ -10,12 +10,28 @@
 
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <link href="<?= asset('assets/extjs/css/theme-classic-all.css') ?>" rel="stylesheet">
     <link href="<?= asset('assets/css/app.css') ?>" rel="stylesheet">
-    <script src="<?= asset('assets/js/app.js') ?>" defer></script>
+
+    <script src="<?= asset('assets/extjs/js/ext-all.js') ?>"></script>
+    <script src="<?= asset('assets/extjs/js/theme/theme-classic.js') ?>"></script>
+    <script src="<?= asset('assets/js/app.js') ?>"></script>
 </head>
 <body>
-
-Hello!!!
-
+<script>
+Ext.application({
+    name: 'HelloExt',
+    launch: function() {
+        Ext.create('Ext.container.Viewport', {
+            layout: 'fit',
+            items: [{
+                title: 'Приложение на Ext JS 6.2',
+                html : '<h3>Добро пожаловать в мир Ext JS 6.2!</h3>'
+            }]
+        });
+    }
+});
+</script>
 </body>
 </html>

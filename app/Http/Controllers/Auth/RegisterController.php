@@ -1,9 +1,9 @@
 <?php
 
-namespace Lej\Http\Controllers\Auth;
+namespace Ds\Http\Controllers\Auth;
 
-use Lej\Models\User;
-use Lej\Http\Controllers\Controller;
+use Ds\Models\User;
+use Ds\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -59,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Lej\User
+     * @return \Ds\User
      */
     protected function create(array $data)
     {

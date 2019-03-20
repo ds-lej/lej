@@ -1,6 +1,6 @@
 <?php
 
-namespace Lej\Providers;
+namespace Ds\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Lej\Model' => 'Lej\Policies\ModelPolicy',
+        'Ds\Model' => 'Ds\Policies\ModelPolicy',
     ];
 
     /**
