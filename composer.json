@@ -9,7 +9,8 @@
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "nwidart/laravel-modules": "^5.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
@@ -24,7 +25,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "Lej\\": "app/"
+            "Ds\\": "app/",
+            "Lej\\": "Modules/"
         }
     },
     "autoload-dev": {
