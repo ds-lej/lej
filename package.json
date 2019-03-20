@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "ajv": "^6.10.0",
+        "font-awesome": "^4.7.0",
         "imagemin": "^6.1.0"
     }
 }
