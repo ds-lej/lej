@@ -19,6 +19,6 @@ yarn-error.log
 /yarn.lock
 
 # Public
-/public/assets/css/app.css
-/public/assets/js/app.js
+/public/css/
+/public/js/
 /public/mix-manifest.json
