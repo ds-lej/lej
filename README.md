@@ -1,4 +1,6 @@
-# ENV
+# 1. LEJ
+
+#### ENV
 
 Create DB:
 
@@ -6,32 +8,40 @@ Create DB:
 2. collation = utf8mb4_unicode_ci
 
 
-# Update vendor
+#### Update vendor
 
 ```$ composer update```
 
-# NPM/YARN install
+#### NPM install
 
 ```
+// clear
+$ npm cache verify  (or "$ npm cache clear --force")
+$ rm package-lock.json
 $ rm -rf node_modules
-$ rm package-lock.json yarn.lock
+
+// install
+$ npm i
 ```
 
-### NPM
+#### RUN frontend
+
+* Dev - ```$ npm run dev```
+* Prod - ```$ npm run prod```
+* Watch - ```$ npm run watch``` or ```$ npm run watch-poll```
+
+
+# 2. Modules
+
+#### NPM install
 
 ```
-$ npm cache clear --force
-$ npm install cross-env
-$ npm install
+// clear
+$ npm cache verify  (or "$ npm cache clear --force")
+$ rm package-lock.json
+$ rm -rf node_modules
+
+// install
+$ npm i
+$ npm i sass sass-loader
 ```
-
-### YARN
-
-yarn install ???
-
-
-# RUN frontend
-
-* Dev - ```$ npm/yarn run dev```
-* Prod - ```$ npm/yarn run prod```
-* Watch - ```$ npm/yarn run watch``` or ```$ npm/yarn run watch-poll```
