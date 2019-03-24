@@ -23,3 +23,7 @@ yarn-error.log
 /public/js/
 /public/fonts/
 /public/mix-manifest.json
+
+# Modules
+/Modules/
+!/Modules/Demo/
