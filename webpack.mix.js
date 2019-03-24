@@ -1,8 +1,9 @@
 let mix = require('laravel-mix');
 
-mix.copy('resources/assets/css/theme-classic.css', 'public/css/theme-classic.css');
 mix.copy('resources/assets/js/ext-all.js', 'public/js/ext-all.js');
-mix.copy('resources/assets/js/theme/theme-classic.js', 'public/js/theme-classic.js');
+mix.copy('resources/assets/themes/classic/theme-classic.css', 'public/theme/theme-classic.css');
+mix.copy('resources/assets/themes/classic/theme-classic.js', 'public/theme/theme-classic.js');
+mix.copyDirectory('resources/assets/themes/classic/images', 'public/theme/images');
 
 mix.setPublicPath('public');
 

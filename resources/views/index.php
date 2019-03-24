@@ -8,11 +8,11 @@
 
     <title><?= config('app.name') ?></title>
 
+    <link href="<?= asset('theme/theme-classic.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/app.css') ?>" rel="stylesheet">
-    <link href="<?= asset('css/theme-classic.css') ?>" rel="stylesheet">
 
     <script src="<?= asset('js/ext-all.js') ?>"></script>
-    <script src="<?= asset('js/theme-classic.js') ?>"></script>
+    <script src="<?= asset('theme/theme-classic.js') ?>"></script>
     <script src="<?= asset('js/app.js') ?>"></script>
 </head>
 <body></body>
