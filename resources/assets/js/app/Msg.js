@@ -11,7 +11,7 @@ Ext.define('Lej.Msg', {
 
         Ext.Msg.show({
             title: 'Error! '+ response.status,
-            message: (typeof data.message !== "undefined") ? data.message : response.statusText,
+            message: (typeof data.message !== "undefined" && data.message) ? data.message : response.statusText,
             icon: Ext.Msg.ERROR
         });
     }
