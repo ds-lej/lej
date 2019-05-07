@@ -2,6 +2,7 @@
 
 namespace Ds\Providers;
 
+use Ds\Support\Asset;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        # Assets
+        # =========
+        $this->app->singleton(Asset::class, function ($app) {
+            return new Asset();
+        });
     }
 }
