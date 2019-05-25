@@ -1,47 +1,40 @@
-# 1. LEJ
+# LEJ ***(Laravel & ExtJS)***
 
-#### ENV
+## Install
 
-Create DB:
+### 1. Lej
 
-1. create DB name
-2. collation = utf8mb4_unicode_ci
-
-
-#### Update vendor
-
-```$ composer update```
-
-#### NPM install
-
-```
-// clear
-$ npm cache verify  (or "$ npm cache clear --force")
-$ rm package-lock.json
-$ rm -rf node_modules
-
-// install
-$ npm i
-```
-
-#### RUN frontend
-
-* Dev - ```$ npm run dev```
-* Prod - ```$ npm run prod```
-* Watch - ```$ npm run watch``` or ```$ npm run watch-poll```
+1. Create DB (collation = utf8mb4_unicode_ci)
+2. Install ```$ composer update```
+3. Set up the environment in the "config/*" files or ".env" file
+4. Run the database migrations ```$ php artisan migrate```
+5. NPM install
+    ```npm
+    # clear
+    $ npm cache verify  (or "$ npm cache clear --force")
+    $ rm package-lock.json
+    $ rm -rf node_modules
+    
+    # install
+    $ npm i
+    ```
+6. RUN frontend
+    * Dev - ```$ npm run dev```
+    * Prod - ```$ npm run prod```
+    * Watch - ```$ npm run watch``` or ```$ npm run watch-poll```
 
 
-# 2. Modules
+### 2. Modules
 
-#### NPM install
-
-```
-// clear
-$ npm cache verify  (or "$ npm cache clear --force")
-$ rm package-lock.json
-$ rm -rf node_modules
-
-// install
-$ npm i
-$ npm i sass sass-loader
-```
+1. Run the database migrations ```$ php artisan module:migrate Blog```
+2. NPM install
+    ```npm
+    # clear
+    $ npm cache verify  (or "$ npm cache clear --force")
+    $ rm package-lock.json
+    $ rm -rf node_modules
+    
+    # install
+    $ npm i
+    $ npm i sass sass-loader
+    ```
