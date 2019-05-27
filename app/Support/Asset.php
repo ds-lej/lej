@@ -59,6 +59,30 @@ class Asset
     }
 
     /**
+     * Remove JS
+     *
+     * @param string $name
+     * @return \Ds\Support\Asset
+     */
+    public function removeJs(string $name)
+    {
+        unset($this->assets['js'][$name]);
+        return $this;
+    }
+
+    /**
+     * Remove CSS
+     *
+     * @param string $name
+     * @return \Ds\Support\Asset
+     */
+    public function removeCss(string $name)
+    {
+        unset($this->assets['css'][$name]);
+        return $this;
+    }
+
+    /**
      * Get all CSS links list
      *
      * @param string $name
@@ -133,6 +157,28 @@ class Asset
         $this->assets[$type] = array_values(Arr::sort($this->assets[$type], function ($v) {
             return $v['priority'];
         }));
+    }
+
+    /**
+     * Check CSS
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasCss(string $name)
+    {
+        return isset($this->assets['css'][$name]);
+    }
+
+    /**
+     * Check JS
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasJs(string $name)
+    {
+        return isset($this->assets['js'][$name]);
     }
 
     /**
