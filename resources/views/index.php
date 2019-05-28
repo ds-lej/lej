@@ -8,12 +8,7 @@
 
     <title><?= config('app.name') ?></title>
 
-    <link href="<?= asset('theme/theme-classic.css') ?>" rel="stylesheet">
-    <link href="<?= asset('css/app.css') ?>" rel="stylesheet">
-
-    <script src="<?= asset('js/ext-all.js') ?>"></script>
-    <script src="<?= asset('theme/theme-classic.js') ?>"></script>
-    <script src="<?= asset('js/app.js') ?>"></script>
+    <?= Asset::all() ?>
 </head>
 <body></body>
 </html>

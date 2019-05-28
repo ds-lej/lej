@@ -19,11 +19,7 @@ yarn-error.log
 /yarn.lock
 
 # Public
-/public/css/
-/public/js/
-/public/fonts/
-/public/theme/
-/public/mix-manifest.json
+/public/assets/
 
 # Modules
 /Modules/
