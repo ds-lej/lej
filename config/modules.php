@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'namespace' => 'Lej',
+    'namespace' => 'Mod',
 
     /*
     |--------------------------------------------------------------------------
@@ -32,8 +32,8 @@ return [
             ### 'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
-            'assets/js/app' => 'Resources/assets/js/app.js',
-            'assets/sass/app' => 'Resources/assets/sass/app.scss',
+            'assets/js/app' => 'Resources/assets-dev/js/app.js',
+            'assets/sass/app' => 'Resources/assets-dev/sass/app.scss',
             'webpack' => 'webpack.mix.js',
             'package' => 'package.json',
         ],
@@ -77,7 +77,7 @@ return [
         |
         */
 
-        'assets' => public_path('modules'),
+        'assets' => public_path('assets/modules'),
         /*
         |--------------------------------------------------------------------------
         | The migrations path
@@ -101,7 +101,7 @@ return [
             'command' => ['path' => 'Console', 'generate' => false],
             'migration' => ['path' => 'Database/Migrations', 'generate' => true],
             'seeder' => ['path' => 'Database/Seeders', 'generate' => true],
-            'factory' => ['path' => 'Database/factories', 'generate' => true],
+            'factory' => ['path' => 'Database/factories', 'generate' => false],
             'model' => ['path' => 'Entities', 'generate' => true],
             'controller' => ['path' => 'Http/Controllers', 'generate' => true],
             'filter' => ['path' => 'Http/Middleware', 'generate' => false],
@@ -148,7 +148,7 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'dslej',
+        'vendor' => 'lej',
         'author' => [
             'name' => 'Diamond Systems',
             'email' => 'me@diamondsystems.org',
