@@ -29,14 +29,14 @@ class Asset
     /**
      * Add CSS
      *
-     * @param string $name
-     * @param string $file
-     * @param int    $priority
-     * @param string $version
+     * @param string      $name
+     * @param string      $file
+     * @param string|bool $version
+     * @param int         $priority
      *
      * @return \Ds\Support\Asset
      */
-    public function addCss(string $name, string $file, int $priority = 0, string $version = null)
+    public function addCss(string $name, string $file, $version = null, int $priority = 10)
     {
         $this->assets['css'][$name] = ['file' => $file, 'priority' => $priority, 'version' => $version];
         return $this;
@@ -45,14 +45,14 @@ class Asset
     /**
      * Add JS
      *
-     * @param string $name
-     * @param string $file
-     * @param int    $priority
-     * @param string $version
+     * @param string      $name
+     * @param string      $file
+     * @param string|bool $version
+     * @param int         $priority
      *
      * @return \Ds\Support\Asset
      */
-    public function addJs(string $name, string $file, int $priority = 0, string $version = null)
+    public function addJs(string $name, string $file, $version = null, int $priority = 10)
     {
         $this->assets['js'][$name] = ['file' => $file, 'priority' => $priority, 'version' => $version];
         return $this;
@@ -140,7 +140,21 @@ class Asset
     {
         if (! isset($asset['file']))
             return '';
-        return asset($asset['file']) . (isset($asset['version']) ? '?'.$asset['version'] : '');
+
+        $v = '';
+        if (! empty($asset['version']))
+        {
+            if (is_string($asset['version']))
+                $v = '?v='.$asset['version'];
+            else
+            {
+                $filePath = public_path($asset['file']);
+                if (file_exists($filePath))
+                    $v = '?v='.@filemtime($filePath);
+            }
+        }
+
+        return asset($asset['file']).$v;
     }
 
     /**

@@ -44,8 +44,8 @@ class AppServiceProvider extends ServiceProvider
         $asset->addJs('ext-all', 'assets/vendor/extjs/ext-all.js');
 
         $asset->addCss('theme-classic', 'assets/theme/css/theme-classic.css');
-        $asset->addCss('theme-app', 'assets/theme/css/app.css');
+        $asset->addCss('theme-app', 'assets/theme/css/app.css', true);
         $asset->addJs('theme-classic', 'assets/theme/js/theme-classic.js');
-        $asset->addJs('theme-app', 'assets/theme/js/app.js');
+        $asset->addJs('theme-app', 'assets/theme/js/app.js', true);
     }
 }
