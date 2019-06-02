@@ -1,8 +1,8 @@
 <?php
 
-namespace Ds\Support\Facades;
+namespace Lej\Support\Facades;
 
-use Ds\Support\Asset as AssetClass;
+use Lej\Support\Asset as AssetClass;
 use Illuminate\Support\Facades\Facade;
 
 class Asset extends Facade

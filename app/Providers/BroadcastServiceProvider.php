@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Providers;
+namespace Lej\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

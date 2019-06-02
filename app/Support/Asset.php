@@ -1,12 +1,12 @@
 <?php
 
-namespace Ds\Support;
+namespace Lej\Support;
 
 use Illuminate\Support\Arr;
 
 /**
  * Asset
- * @package Ds\Support
+ * @package Lej\Support
  * @author Diamond <me@diamondsystems.org>
  */
 class Asset
@@ -34,7 +34,7 @@ class Asset
      * @param string|bool $version
      * @param int         $priority
      *
-     * @return \Ds\Support\Asset
+     * @return \Lej\Support\Asset
      */
     public function addCss(string $name, string $file, $version = null, int $priority = 10)
     {
@@ -50,7 +50,7 @@ class Asset
      * @param string|bool $version
      * @param int         $priority
      *
-     * @return \Ds\Support\Asset
+     * @return \Lej\Support\Asset
      */
     public function addJs(string $name, string $file, $version = null, int $priority = 10)
     {
@@ -62,7 +62,7 @@ class Asset
      * Remove JS
      *
      * @param string $name
-     * @return \Ds\Support\Asset
+     * @return \Lej\Support\Asset
      */
     public function removeJs(string $name)
     {
@@ -74,7 +74,7 @@ class Asset
      * Remove CSS
      *
      * @param string $name
-     * @return \Ds\Support\Asset
+     * @return \Lej\Support\Asset
      */
     public function removeCss(string $name)
     {

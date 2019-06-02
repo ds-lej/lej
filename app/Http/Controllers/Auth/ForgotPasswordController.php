@@ -1,8 +1,8 @@
 <?php
 
-namespace Ds\Http\Controllers\Auth;
+namespace Lej\Http\Controllers\Auth;
 
-use Ds\Http\Controllers\Controller;
+use Lej\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

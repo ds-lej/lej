@@ -1,8 +1,8 @@
 <?php
 
-namespace Ds\Providers;
+namespace Lej\Providers;
 
-use Ds\Support\Asset;
+use Lej\Support\Asset;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

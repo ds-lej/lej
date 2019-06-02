@@ -1,6 +1,6 @@
 <?php
 
-namespace Ds\Http\Controllers;
+namespace Lej\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
