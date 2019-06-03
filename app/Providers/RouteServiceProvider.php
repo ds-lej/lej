@@ -36,7 +36,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
-
+        $this->mapExtRoutes();
         $this->mapWebRoutes();
 
         //
@@ -54,6 +54,22 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "ext" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     * And also, heading "EXT"
+     *
+     * @return void
+     */
+    protected function mapExtRoutes()
+    {
+        Route::prefix('ext')
+            ->middleware('ext')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/ext.php'));
     }
 
     /**

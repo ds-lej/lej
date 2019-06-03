@@ -7,6 +7,6 @@ Ext.define('Lej.Ajax', {
     alternateClassName: 'Ajax',
 
     method: 'POST',
-    url: Cfg.api(),
-    // defaultHeaders: Cfg.ajaxHeaders(),
+    url: Cfg.urlExt(),
+    defaultHeaders: Cfg.ajaxHeaders(),
 });
