@@ -10,6 +10,7 @@
     - *[GitHub](https://github.com/nWidart/laravel-modules)*
 - **[ExtJS](http://www.sencha.com/)**
     - *[Documentation](https://docs.sencha.com/)*
+    - *[GitHub](https://github.com/cdnjs/cdnjs/tree/master/ajax/libs/extjs/6.2.0)*
 
 
 ### Quick install
