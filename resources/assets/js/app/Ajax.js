@@ -8,5 +8,4 @@ Ext.define('Lej.Ajax', {
 
     method: 'POST',
     url: Cfg.urlExt(),
-    defaultHeaders: Cfg.ajaxHeaders(),
 });

@@ -1,3 +1,4 @@
+require('./ext-overrides');
 require('./functions');
 require('./Cfg');
 require('./Msg');
