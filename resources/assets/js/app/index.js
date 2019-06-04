@@ -1,3 +1,4 @@
+require('./functions');
 require('./Cfg');
 require('./Msg');
 require('./Ajax');
