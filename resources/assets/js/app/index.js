@@ -1,6 +1,8 @@
 require('./ext-overrides');
 require('./functions');
-require('./Cfg');
-require('./Msg');
-require('./Ajax');
-require('./App');
+
+// Classes
+require('./Classes/Cfg');
+require('./Classes/Msg');
+require('./Classes/Ajax');
+require('./Classes/App');
