@@ -1,7 +1,12 @@
+/**
+ * LejApp application
+ *
+ * Events:
+ *  Ext.on('LejAppInit', function() {
+ *      // init your extensions
+ *  });
+ */
 Ext.application({
-    name: 'App',
-
-    init: function() {
-        Cfg.dump(Cfg.api('test'));
-    }
+    name: 'LejApp',
+    init: function() { Ext.GlobalEvents.fireEvent('LejAppInit'); }
 });
