@@ -1,7 +1,7 @@
 let mix = require('laravel-mix');
 
 mix.copyDirectory('resources/assets/vendor', 'public/assets/vendor');
-mix.copyDirectory('resources/assets/themes/classic', 'public/assets/theme/classic');
+mix.copyDirectory('resources/assets/themes', 'public/assets/themes');
 
 mix.setPublicPath('public/assets');
 
