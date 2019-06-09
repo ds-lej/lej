@@ -41,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
             return;
         $asset = app()->make(Asset::class);
 
+        $asset->addJs('jquery', 'assets/vendor/jquery/jquery-3.4.1.min.js');
         $asset->addJs('ext-all', 'assets/vendor/extjs/ext-all.js');
 
         $asset->addCss('theme-classic', 'assets/themes/neptune/theme-neptune-min.css');
