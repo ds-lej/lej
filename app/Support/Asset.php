@@ -27,34 +27,61 @@ class Asset
     }
 
     /**
+     * Add asset
+     *
+     * @param string $type
+     * @param string $name
+     * @param string $file
+     * @param string|bool $version
+     * @param int|string|array $priorityOrDepends
+     */
+    private function addAsset(string $type, string $name, string $file, $version = null, $priorityOrDepends = 100)
+    {
+        $assetData = [
+            'file'     => $file,
+            'priority' => 100,
+            'version'  => $version,
+            'depends'  => [],
+        ];
+        if (is_numeric($priorityOrDepends))
+            $assetData['priority'] = $priorityOrDepends;
+        elseif (is_string($priorityOrDepends))
+            $assetData['depends'] = [$priorityOrDepends];
+        elseif (is_array($priorityOrDepends))
+            $assetData['depends'] = array_values($priorityOrDepends);
+
+        $this->assets[$type][$name] = $assetData;
+    }
+
+    /**
      * Add CSS
      *
-     * @param string      $name
-     * @param string      $file
-     * @param string|bool $version
-     * @param int         $priority
+     * @param string           $name
+     * @param string           $file
+     * @param string|bool      $version           - version number as a string, or true for with automatic versioning.
+     * @param int|string|array $priorityOrDepends - priority number or dependent css as string or array. Default: priority 100
      *
      * @return \Lej\Support\Asset
      */
-    public function addCss(string $name, string $file, $version = null, int $priority = 10)
+    public function addCss(string $name, string $file, $version = null, $priorityOrDepends = 100)
     {
-        $this->assets['css'][$name] = ['file' => $file, 'priority' => $priority, 'version' => $version];
+        $this->addAsset('css', $name, $file, $version, $priorityOrDepends);
         return $this;
     }
 
     /**
      * Add JS
      *
-     * @param string      $name
-     * @param string      $file
-     * @param string|bool $version
-     * @param int         $priority
+     * @param string           $name
+     * @param string           $file
+     * @param string|bool      $version           - version number as a string, or true for with automatic versioning.
+     * @param int|string|array $priorityOrDepends - priority number or dependent css as string or array. Default: priority 100
      *
      * @return \Lej\Support\Asset
      */
-    public function addJs(string $name, string $file, $version = null, int $priority = 10)
+    public function addJs(string $name, string $file, $version = null, $priorityOrDepends = 100)
     {
-        $this->assets['js'][$name] = ['file' => $file, 'priority' => $priority, 'version' => $version];
+        $this->addAsset('js', $name, $file, $version, $priorityOrDepends);
         return $this;
     }
 
@@ -83,78 +110,99 @@ class Asset
     }
 
     /**
-     * Get all CSS links list
+     * Get all CSS
      *
      * @param string $name
      * @return string
      */
     private function linkCss(string $name = null)
     {
-        if (empty($this->assets['css']))
-            return '';
-
-        if (! $name)
-        {
-            $this->sortAssetsByPriority('css');
-            $html = [];
-            foreach ($this->assets['css'] as $css)
-                $html[] = '<link rel="stylesheet" href="' . $this->getLink($css) . '" />';
-            return implode(PHP_EOL, $html) . PHP_EOL;
-        }
-        elseif (isset($this->assets['css'][$name]))
-            return '<link rel="stylesheet" href="' . $this->getLink($this->assets['css'][$name]) . '" />' . PHP_EOL;
-        else
-            return '';
+        return empty($this->assets['css']) ? '' : $this->links('css', $name).PHP_EOL;
     }
 
     /**
-     * Get all JS links list
+     * Get all JS
      *
      * @param string $name
      * @return string
      */
     private function linkJs(string $name = null)
     {
-        if (empty($this->assets['js']))
-            return '';
-
-        if (! $name)
-        {
-            $this->sortAssetsByPriority('js');
-            $html = [];
-            foreach ($this->assets['js'] as $js)
-                $html[] = '<script src="' . $this->getLink($js) . '"></script>';
-            return implode(PHP_EOL, $html) . PHP_EOL;
-        }
-        elseif (isset($this->assets['js'][$name]))
-            return '<script src="' . $this->getLink($this->assets['js'][$name]) . '"></script>' . PHP_EOL;
-        else
-            return '';
+        return empty($this->assets['js']) ? '' : $this->links('js', $name).PHP_EOL;
     }
 
     /**
-     * @param array $asset
+     * Get assets
+     *
+     * @param string $type
+     * @param string $name
+     * @param array  $prints
      * @return string
      */
-    private function getLink(array $asset)
+    private function links(string $type, string $name = null, array &$prints = null)
     {
-        if (! isset($asset['file']))
+        if (! $name)
+            $this->sortAssetsByPriority($type);
+        elseif (isset($this->assets[$type][$name]))
+            $assets = [$name => $this->assets[$type][$name]];
+        else
+            return '';
+
+        $html = [];
+        foreach (($assets ?? $this->assets[$type]) as $name => $asset)
+        {
+            if (isset($prints[$name]))
+                continue;
+
+            $prints[$name] = true;
+            foreach ($asset['depends'] as $depend)
+            {
+                if (isset($prints[$depend]) || ! isset($this->assets[$type][$depend]))
+                    continue;
+
+                $html[] = $this->links($type, $depend, $prints);
+            }
+            $html[] = $this->getAppend($type, $asset['file'], $asset['version']);
+        }
+
+        return $html ? implode(PHP_EOL, $html) : '';
+    }
+
+    /**
+     * Get append html
+     *
+     * @param string $type
+     * @param string $file
+     * @param string|bool $version
+     *
+     * @return string
+     */
+    private function getAppend(string $type, string $file, $version = null)
+    {
+        if (! $file)
             return '';
 
         $v = '';
-        if (! empty($asset['version']))
+        if ($version)
         {
-            if (is_string($asset['version']))
-                $v = '?v='.$asset['version'];
+            if (is_string($version))
+                $v = '?v='.$version;
             else
             {
-                $filePath = public_path($asset['file']);
+                $filePath = public_path($file);
                 if (file_exists($filePath))
                     $v = '?v='.@filemtime($filePath);
             }
         }
+        $link = asset($file).$v;
 
-        return asset($asset['file']).$v;
+        switch ($type)
+        {
+            case 'js':  return '<script src="' . $link . '"></script>';
+            case 'css': return '<link rel="stylesheet" href="' . $link . '" />';
+
+            default: return '';
+        }
     }
 
     /**
@@ -168,9 +216,9 @@ class Asset
         if (empty($this->assets[$type]))
             return;
 
-        $this->assets[$type] = array_values(Arr::sort($this->assets[$type], function ($v) {
+        $this->assets[$type] = Arr::sort($this->assets[$type], function ($v) {
             return $v['priority'];
-        }));
+        });
     }
 
     /**
