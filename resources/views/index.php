@@ -8,7 +8,9 @@
 
     <title><?= config('app.name') ?></title>
 
-    <?= Asset::all() ?>
+    <?= Asset::css() ?>
 </head>
-<body></body>
+<body>
+<?= Asset::js() ?>
+</body>
 </html>
