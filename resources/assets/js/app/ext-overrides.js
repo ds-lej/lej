@@ -1,18 +1,22 @@
 /**
- * Globally set headers for ajax requests
- *
- * Event example:
- *      Ext.on('setAjaxDefaultHeaders', function(opts) {
- *          // delete options
- *          delete(opts['EXT-AJAX']);
- *
- *          // add options
- *          opts.yourAddHeader = 'header value'
- *      });
+ * Ext.data.Connection override
  */
 Ext.override(Ext.data.Connection, {
     setOptions: function(opts, scope)
     {
+        /**
+         * Globally set headers for ajax requests
+         *
+         * Event example:
+         * ----------------
+         *  Ext.on('setAjaxDefaultHeaders', function(opts) {
+         *      // delete options
+         *      delete(opts['EXT-AJAX']);
+         *
+         *      // add options
+         *      opts.yourAddHeader = 'header value'
+         *  });
+         */
         let newOpts = Cfg.ajaxHeaders();
         if (typeof opts.defaultHeaders === "object")
             newOpts = Ext.Object.merge(opts.defaultHeaders, newOpts);
