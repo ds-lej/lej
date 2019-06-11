@@ -8,9 +8,6 @@ mix.setPublicPath('public/assets');
 mix.js('resources/assets/js/app.js', 'app/js')
    .sass('resources/assets/sass/app.scss', 'app/css');
 
-if (mix.inProduction())
-    mix.version();
-
 // mix.browserSync({
 //     proxy: 'my-domain.dev'
 // });
