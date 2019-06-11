@@ -5,4 +5,6 @@ require('./functions');
 require('./Classes/Cfg');
 require('./Classes/Msg');
 require('./Classes/Ajax');
-require('./Classes/App');
+
+// App
+require('./App');
