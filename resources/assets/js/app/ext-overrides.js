@@ -2,6 +2,11 @@
  * Ext.data.Connection override
  */
 Ext.override(Ext.data.Connection, {
+    listeners: {
+        requestcomplete:  function(conn, res) { delete(Ajax.requestList[res.requestId]); },
+        requestexception: function(conn, res) { delete(Ajax.requestList[res.requestId]); },
+    },
+
     setOptions: function(opts, scope)
     {
         /**
@@ -25,5 +30,13 @@ Ext.override(Ext.data.Connection, {
         opts.defaultHeaders = newOpts;
 
         return this.callParent(arguments);
+    },
+
+    request: function(...args)
+    {
+        const request = this.callParent(args);
+        Ajax.requestList[request.id] = request;
+
+        return request;
     }
 });

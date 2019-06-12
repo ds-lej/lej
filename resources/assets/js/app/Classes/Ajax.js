@@ -8,4 +8,19 @@ Ext.define('Lej.Ajax', {
 
     method: 'POST',
     url: Cfg.urlExt(),
+
+    requestList: {},
+
+    loadingCnt: function()
+    {
+        let cnt = 0;
+        for (let req in this.requestList)
+        {
+            if (this.isLoading(this.requestList[req]))
+                cnt++;
+            else
+                delete(this.requestList[req]);
+        }
+        return cnt;
+    }
 });
