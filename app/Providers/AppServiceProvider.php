@@ -43,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
 
         $asset->addCss('nprogress', 'assets/vendor/nprogress/nprogress.min.css');
         $asset->addJs('nprogress', 'assets/vendor/nprogress/nprogress.min.js', true);
+        $asset->addJs('app-preloader', 'assets/app/js/app-preloader.js', true);
 
         $asset->addJs('jquery', 'assets/vendor/jquery/jquery-3.4.1.min.js');
         $asset->addJs('ext-all', 'assets/vendor/extjs/ext-all.js');

@@ -5,6 +5,7 @@ Ext.application({
     name: 'LejApp',
 
     isNProgressControl: false,
+    preloaderId: 'app_preloader',
 
     init: function()
     {
@@ -71,5 +72,11 @@ Ext.application({
                 NProgress.done();
             clearInterval(interval);
         });
+    },
+
+    destroyPreloader: function()
+    {
+        let preloader = Ext.get(this.preloaderId);
+        preloader.destroy();
     }
 });
