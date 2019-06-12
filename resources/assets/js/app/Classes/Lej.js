@@ -10,20 +10,27 @@ Ext.define('Lej', {
      * @param {function} callback
      * @param {number}   timeout
      * @param {number}   count    - iterations count
+     * @param {function} destructCallback
+     * @param args
      *
      * @return {number}
      */
-    setIntervalCount: function(callback, timeout, count)
+    setIntervalCount: function(callback, timeout, count, destructCallback=null, ...args)
     {
         if (typeof count !== "number")
             count = 1;
         let cnt = 0;
-        const interval = setInterval(function() {
+        const interval = setInterval(function()
+        {
             cnt++;
-            callback();
+            callback(...args);
             if (cnt >= count)
+            {
                 clearInterval(interval);
-        }, timeout);
+                if (typeof destructCallback === "function")
+                    destructCallback(...args);
+            }
+        }, timeout, ...args);
 
         return interval;
     },
@@ -34,13 +41,26 @@ Ext.define('Lej', {
      * @param {function} callback
      * @param {number}   timeout
      * @param {number}   timeup   - time to destroy setInterval()
+     * @param {function} destructCallback
+     * @param args
      *
      * @return {number}
      */
-    setIntervalUp: function(callback, timeout, timeup)
+    setIntervalUp: function(callback, timeout, timeup, destructCallback=null, ...args)
     {
-        const interval = setInterval(callback, timeout);
-        setTimeout(function(){clearInterval(interval);}, timeup);
+        let t = Date.now() + ((typeof timeup !== "number") ? 0 : timeup);
+
+        const interval = setInterval(function()
+        {
+            if (Date.now() >= t)
+            {
+                clearInterval(interval);
+                if (typeof destructCallback === "function")
+                    destructCallback(...args);
+            }
+            else
+                callback(...args);
+        }, timeout, ...args);
 
         return interval;
     }
