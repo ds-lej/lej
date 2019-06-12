@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
         $asset = app()->make(Asset::class);
 
         $asset->addCss('nprogress', 'assets/vendor/nprogress/nprogress.min.css');
-        $asset->addJs('nprogress', 'assets/vendor/nprogress/nprogress.min.js');
+        $asset->addJs('nprogress', 'assets/vendor/nprogress/nprogress.min.js', true);
 
         $asset->addJs('jquery', 'assets/vendor/jquery/jquery-3.4.1.min.js');
         $asset->addJs('ext-all', 'assets/vendor/extjs/ext-all.js');
