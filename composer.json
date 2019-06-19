@@ -26,7 +26,7 @@
         ],
         "psr-4": {
             "Lej\\": "app/",
-            "Mod\\": "Modules/"
+            "Modules\\": "Modules/"
         }
     },
     "autoload-dev": {

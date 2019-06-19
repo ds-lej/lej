@@ -22,5 +22,5 @@ yarn-error.log
 /public/assets/
 
 # Modules
-/Modules/
+/Modules/*
 !/Modules/Demo/
