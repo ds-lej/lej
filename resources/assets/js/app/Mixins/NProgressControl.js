@@ -1,5 +1,5 @@
 /**
- * NProgress control
+ * Mixin - NProgress control
  */
 Ext.define('Lej.Mixins.NProgressControl',
 {

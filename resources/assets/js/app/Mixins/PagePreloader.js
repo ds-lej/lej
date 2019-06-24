@@ -1,5 +1,5 @@
 /**
- * Page preloader control
+ * Mixin - Page preloader control
  */
 Ext.define('Lej.Mixins.PagePreloader',
 {

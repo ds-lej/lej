@@ -1,11 +1,12 @@
 /**
- * Ajax
+ * AjaxPost
  */
-Ext.define('Lej.Ajax', {
+Ext.define('Lej.AjaxPost', {
     extend: 'Ext.data.Connection',
     mixins: {
         ajax: 'Lej.Mixins.Ajax',
     },
     singleton: true,
-    alternateClassName: 'Ajax',
+    alternateClassName: 'AjaxPost',
+    method: 'POST',
 });
