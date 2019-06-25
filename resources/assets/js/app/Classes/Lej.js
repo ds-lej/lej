@@ -63,5 +63,26 @@ Ext.define('Lej', {
         }, timeout, ...args);
 
         return interval;
+    },
+
+    redirect: function(to)
+    {
+        if (window.location.pathname === to)
+            return false;
+        window.location.href = to;
+        if (typeof NProgress === "object" && ! NProgress.isStarted())
+            NProgress.start();
+        return true;
+    },
+
+    decode: function(data)
+    {
+        try {
+            return Ext.decode(data);
+        }
+        catch (e) {
+            Cfg.log('Not type JSON! TypeOf='+(typeof data));
+            return {};
+        }
     }
 });
