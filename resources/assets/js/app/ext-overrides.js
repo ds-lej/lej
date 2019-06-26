@@ -2,10 +2,6 @@
  * Ext.data.Connection override
  */
 Ext.override(Ext.data.Connection, {
-    listeners: {
-        requestcomplete:  function(conn, res) { delete(Ajax.requestList[res.requestId]); },
-        requestexception: function(conn, res) { delete(Ajax.requestList[res.requestId]); },
-    },
 
     setOptions: function(opts, scope)
     {
@@ -34,9 +30,32 @@ Ext.override(Ext.data.Connection, {
 
     request: function(...args)
     {
+        const me = this;
         const request = this.callParent(args);
+
+        request.then(
+            function(res){me.requestComplete(res);},
+            function(res){me.requestComplete(res);}
+        );
         Ajax.requestList[request.id] = request;
 
         return request;
+    },
+
+    requestComplete: function(response)
+    {
+        this.isRedirect(response);
+        this.deleteActiveRequest(response.requestId);
+    },
+
+    deleteActiveRequest: function(requestId)
+    {
+        delete(Ajax.requestList[requestId]);
+    },
+
+    isRedirect: function(response)
+    {
+        const redirect = response.getResponseHeader('RedirectTo');
+        return redirect ? Lej.redirect(redirect) : false;
     }
 });
