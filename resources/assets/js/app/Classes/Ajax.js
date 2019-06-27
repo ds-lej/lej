@@ -1,5 +1,8 @@
 /**
  * Ajax
+ *
+ * @extends Ext.data.Connection
+ * @mixin Lej.Mixins.Ajax
  */
 Ext.define('Lej.Ajax', {
     extend: 'Ext.data.Connection',
