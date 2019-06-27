@@ -6,11 +6,12 @@ mix.copyDirectory('resources/assets/themes', 'public/assets/themes');
 
 mix.setPublicPath('public/assets');
 
-mix.js('resources/assets/js/app.js', 'app/js')
+mix.js('resources/assets/js/app-preloader.js', 'app/js')
+   .js('resources/assets/js/app.js', 'app/js')
    .sass('resources/assets/sass/app.scss', 'app/css');
 
-mix.js('resources/assets/js/app-preloader.js', 'app/js');
+mix.js('resources/assets/modules/auth/js/app.js', 'modules/auth/auth.js');
 
 // mix.browserSync({
-//     proxy: 'my-domain.dev'
+//     proxy: process.env.MIX_BROWSER_SYNC_PROXY
 // });

@@ -2,6 +2,11 @@
 
 return [
 
+    'isAuth'   => true,
+    'register' => false,
+    'reset'    => false,
+    'verify'   => false,
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -67,7 +72,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Lej\Models\User::class,
+            'model' => Lej\Entities\User::class,
         ],
 
         // 'users' => [

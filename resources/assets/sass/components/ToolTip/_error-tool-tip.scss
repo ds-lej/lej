@@ -1,0 +1,19 @@
+.errors-tip {
+  &,
+  .x-tool-img
+  {
+    background-color: #f5dad8;
+  }
+  .x-tip-anchor-top:after {
+    border-bottom-color: #f5dad8;
+  }
+  .x-tip-anchor-bottom:after {
+    border-top-color: #f5dad8;
+  }
+  .x-tip-anchor-left:after {
+    border-right-color: #f5dad8;
+  }
+  .x-tip-anchor-right:after {
+    border-left-color: #f5dad8;
+  }
+}

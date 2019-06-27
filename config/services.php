@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Lej\Models\User::class,
+        'model' => Lej\Entities\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

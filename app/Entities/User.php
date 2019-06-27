@@ -1,6 +1,6 @@
 <?php
 
-namespace Lej\Models;
+namespace Lej\Entities;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

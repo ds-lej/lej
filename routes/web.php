@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
+// Main page
+// ============
+$mainRoute = Route::get('/', function () {
     return view('index');
 });
+
+
+// Auth
+// ============
+$configAuth = config('auth');
+if ($configAuth['isAuth'])
+{
+    $mainRoute->middleware('auth');
+
+    Route::auth([
+        'register' => $configAuth['register'],
+        'reset'    => $configAuth['reset'],
+        'verify'   => $configAuth['verify'],
+    ]);
+}

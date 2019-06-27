@@ -53,5 +53,8 @@ class AppServiceProvider extends ServiceProvider
 
         $asset->addCss('main-app', 'assets/app/css/app.css', true);
         $asset->addJs('main-app', 'assets/app/js/app.js', true);
+
+        if (config('auth.isAuth'))
+            $asset->addJs('auth', 'assets/modules/auth/auth.js', true);
     }
 }

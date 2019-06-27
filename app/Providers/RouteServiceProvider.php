@@ -39,6 +39,9 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapExtRoutes();
         $this->mapWebRoutes();
 
+        if (config('auth.isAuth'))
+            Route::prependMiddlewareToGroup('ext', 'auth.ext');
+
         //
     }
 

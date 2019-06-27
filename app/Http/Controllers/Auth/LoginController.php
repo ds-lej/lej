@@ -2,23 +2,16 @@
 
 namespace Lej\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+
 use Lej\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        login as private trait_login;
+    }
 
     /**
      * Where to redirect users after login.
@@ -35,5 +28,53 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function showLoginForm()
+    {
+        return view('index');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function loggedOut(Request $request)
+    {
+        return $this->resultRedirect('/login');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        return $this->resultRedirect('/');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function sendFailedLoginResponse(Request $request)
+    {
+        $msgAuthFailed = trans('auth.failed');
+
+        return $this->resultError(
+            'The given data was invalid.',
+            [
+                $this->username() => [$msgAuthFailed],
+                'password' => [$msgAuthFailed],
+            ]
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function username()
+    {
+        return 'login';
     }
 }
