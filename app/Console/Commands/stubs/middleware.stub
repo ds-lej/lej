@@ -1,0 +1,28 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Auth;
+use Asset;
+use Closure;
+use Illuminate\Http\Request;
+
+class $CLASS$
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        if (! $request->ajax() && (! config('auth.isAuth') || Auth::check()))
+        {
+            Asset::addCss('module_$LOWER_NAME$', 'assets/modules/$LOWER_NAME$/$LOWER_NAME$.css', true)
+                 ->addJs('module_$LOWER_NAME$', 'assets/modules/$LOWER_NAME$/$LOWER_NAME$.js', true);
+        }
+        return $next($request);
+    }
+}

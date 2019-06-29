@@ -1,0 +1,8 @@
+/**
+ * Initialize App
+ */
+Ext.on('LejAppInit', function(app) {
+    app.endPagePreloader(
+        Ext.create('$STUDLY_NAME$.Classes.Demo')
+    );
+});

@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'namespace' => 'Mod',
+    'namespace' => 'Modules',
 
     /*
     |--------------------------------------------------------------------------
@@ -23,23 +23,29 @@ return [
     */
 
     'stubs' => [
-        'enabled' => false,
-        'path' => base_path() . '/vendor/nwidart/laravel-modules/src/Commands/stubs',
+        'enabled' => true,
+        'path' => app_path('Console/Commands/stubs'),
         'files' => [
             'routes/web' => 'Routes/web.php',
+            'routes/ext' => 'Routes/ext.php',
             'routes/api' => 'Routes/api.php',
             ### 'views/index' => 'Resources/views/index.blade.php',
             ### 'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
             'assets/js/app' => 'Resources/assets-dev/js/app.js',
+            'assets/js/app/init' => 'Resources/assets-dev/js/app/init.js',
+            'assets/js/app/Classes/Demo' => 'Resources/assets-dev/js/app/Classes/Demo.js',
             'assets/sass/app' => 'Resources/assets-dev/sass/app.scss',
             'webpack' => 'webpack.mix.js',
             'package' => 'package.json',
         ],
         'replacements' => [
             'routes/web' => ['LOWER_NAME', 'STUDLY_NAME'],
+            'routes/ext' => ['LOWER_NAME', 'STUDLY_NAME'],
             'routes/api' => ['LOWER_NAME'],
+            'assets/js/app/init' => ['LOWER_NAME', 'STUDLY_NAME'],
+            'assets/js/app/Classes/Demo' => ['LOWER_NAME', 'STUDLY_NAME'],
             'webpack' => ['LOWER_NAME'],
             'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
             ### 'views/index' => ['LOWER_NAME'],
@@ -104,7 +110,7 @@ return [
             'factory' => ['path' => 'Database/factories', 'generate' => false],
             'model' => ['path' => 'Entities', 'generate' => true],
             'controller' => ['path' => 'Http/Controllers', 'generate' => true],
-            'filter' => ['path' => 'Http/Middleware', 'generate' => false],
+            'filter' => ['path' => 'Http/Middleware', 'generate' => true],
             'request' => ['path' => 'Http/Requests', 'generate' => false],
             'provider' => ['path' => 'Providers', 'generate' => true],
             'assets' => ['path' => 'Resources/assets', 'generate' => true],

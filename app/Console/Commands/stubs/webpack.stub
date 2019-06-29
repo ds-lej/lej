@@ -1,0 +1,12 @@
+const mix = require('laravel-mix');
+
+mix.setPublicPath('../../public/assets');
+
+mix.js(__dirname + '/Resources/assets-dev/js/app.js', 'modules/$LOWER_NAME$/$LOWER_NAME$.js')
+   .sass( __dirname + '/Resources/assets-dev/sass/app.scss', 'modules/$LOWER_NAME$/$LOWER_NAME$.css');
+
+if (mix.inProduction())
+{
+    mix.copy('../../public/assets/modules/$LOWER_NAME$/$LOWER_NAME$.js', 'Resources/assets/$LOWER_NAME$.js');
+    mix.copy('../../public/assets/modules/$LOWER_NAME$/$LOWER_NAME$.css', 'Resources/assets/$LOWER_NAME$.css');
+}
