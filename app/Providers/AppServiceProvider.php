@@ -2,11 +2,14 @@
 
 namespace Lej\Providers;
 
+use Route;
 use Lej\Support\Asset;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    protected $isAuthSys = false;
+
     /**
      * Bootstrap any application services.
      *
@@ -15,6 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->isAuthSys)
+            Route::pushMiddlewareToGroup('web', \Illuminate\Session\Middleware\AuthenticateSession::class);
+
         $this->addAssets();
     }
 
@@ -24,6 +30,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if (config('auth.isAuth'))
+            $this->isAuthSys = true;
+
         # Assets
         # =========
         $this->app->singleton(Asset::class, function ($app) {
@@ -54,7 +63,7 @@ class AppServiceProvider extends ServiceProvider
         $asset->addCss('main-app', 'assets/app/css/app.css', true);
         $asset->addJs('main-app', 'assets/app/js/app.js', true);
 
-        if (config('auth.isAuth'))
+        if ($this->isAuthSys)
             $asset->addJs('auth', 'assets/modules/auth/auth.js', true);
     }
 }
