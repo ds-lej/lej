@@ -26,34 +26,11 @@ Ext.define('Auth.Login', {
         const me = this;
 
         if (window.location.pathname === '/')
-        {
-            var mainPanel = new Ext.panel.Panel({
-                renderTo: document.body,
-                height: 100,
-                width: 200,
-                title: 'Foo',
-                items: [{
-                    xtype: 'button',
-                    margin: 10,
-                    iconCls: 'fa-sign-out',
-                    text: 'Logout',
-                    scale: 'medium',
-                    iconAlign: 'right',
-                    handler: function()
-                    {
-                        AjaxPost.request({
-                            url: me.urlLogout
-                        });
-                    }
-                }]
-            });
-        }
-        else
-        {
-            this.createFormLogin();
-            this.items = [this.formLogin];
-            this.callParent();
-        }
+            return;
+
+        this.createFormLogin();
+        this.items = [this.formLogin];
+        this.callParent();
     },
 
     createFormLogin: function()

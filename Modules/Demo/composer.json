@@ -1,0 +1,25 @@
+{
+    "name": "lej/demo",
+    "description": "",
+    "authors": [
+        {
+            "name": "Diamond Systems",
+            "email": "me@diamondsystems.org"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Demo\\Providers\\DemoServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Demo\\": ""
+        }
+    }
+}
