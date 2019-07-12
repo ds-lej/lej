@@ -9,17 +9,22 @@ The product is based on the [Laravel](https://laravel.com/) and [ExtJS](https://
 1. Set up the environment in the "config/*" files or ".env" file
 2. Install
     ```npm
-    $ composer update
+    $ composer install
     
     ### Migrate DB
     $ php artisan module:publish-migration
     $ php artisan migrate
  
+    ### Seed data
+    $ php artisan db:seed
+  
     ### Frontend
     $ php artisan module:publish
     $ npm i
     $ npm run prod
     ```
+
+Auth login and password: ```admin```
 
 ## Resources
 
