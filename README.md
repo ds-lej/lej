@@ -11,11 +11,9 @@ The product is based on the [Laravel](https://laravel.com/) and [ExtJS](https://
     ```npm
     $ composer install
     
-    ### Migrate DB
+    ### Migrate and Seed DB
     $ php artisan module:publish-migration
     $ php artisan migrate
- 
-    ### Seed data
     $ php artisan db:seed
   
     ### Frontend
